@@ -5,8 +5,9 @@ fn main() {
     let st = "this land was made for you and me";
     print_shit(x);
 
-    println!("x*y is: {}",mult(x,y));
+    //println!("x*y is: {}",mult(x,y));
     println!("split string is: {}",stringIndexValue(st.to_string(),6));
+    loopString(st.to_string());
 }
 
 //print method but must take u32
@@ -23,4 +24,10 @@ fn mult(x: u32,y: u32) -> u32 {
 fn stringIndexValue(a: String,i:usize) -> String {
     let s = a.chars().nth(i).unwrap();
     return String::from(s);
+}
+
+fn loopString(a: String){
+    for i in 0..a.chars().count(){
+        println!("i is : {}",String::from(a.chars().nth(i).unwrap()));
+    }
 }
