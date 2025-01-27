@@ -1,5 +1,7 @@
 
 mod test;
+//mod testdir;
+
 
 fn main() {
     let x: u32 = 5;
@@ -30,6 +32,9 @@ fn stringIndexValue(a: String,i:usize) -> String {
 
 fn loopString(a: String){
     for i in 0..a.chars().count(){
+        if a.chars().nth(i).unwrap() == char::from('e'){
+            println!("FOUND e");
+        }
         println!("i is : {}",String::from(a.chars().nth(i).unwrap()));
     }
 }
