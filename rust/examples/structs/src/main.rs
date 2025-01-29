@@ -1,36 +1,49 @@
 
-struct Engine {
-    fuel_type: String,
-    horsepower: u32,
-    weight: u32,
+pub struct Car {
+
+    pub year: String,
+    pub model: String,
+    pub num_of_engines: u8,
+    pub mph: u8,
 }
 
+pub struct Boat {
+    pub year: String,
+    pub model: String,
+    pub num_of_engines: u8,
+    pub knots: u8,
+}
+
+pub trait Describe {
+    fn summarize(&self) -> String;
+}
+impl Describe for Car {
+    fn summarize(&self) -> String {
+        return self.year.clone();
+    }
+}
+
+impl Describe for Boat{
+    fn summarize(&self) -> String {
+        return self.model.clone();
+    }
+}
+//traits contain fn
 fn main() {
-    let mut e1 = Engine{
-        fuel_type: String::from("Gasoline"),
-        horsepower: 50,
-        weight: 500
+    let car1 = Car {
+        year: String::from("1950"),
+        model: String::from("Ford"),
+        num_of_engines: 1,
+        mph: 50,
     };
 
+    let boat1 = Boat {
+        year: String::from("2000"),
+        model: String::from("navy"),
+        num_of_engines: 2,
+        knots: 20,
+    };
 
-    println!("Engine horsepower is: {}",e1.horsepower);
-
-    e1.horsepower = 80;
-
-    println!("Engine horsepower is: {}",e1.horsepower);
-
-    let mut e2 = build_engine(String::from("Diesel"),300,900);
-
-    println!("Engine 2 horsepower is: {}",e2.horsepower);
-    println!("Engine 2 fuel type is: {}",e2.fuel_type);
-}
-//create and return an instance of struct
-
-//note: if just assigning value dont need the object reference, but if multiplying we do
-fn build_engine(s: String,h: u32,w: u32) -> Engine {
-    Engine{
-        fuel_type: s,
-        horsepower: &h * &w,
-        weight: w,
-    }
+    println!("{}",car1.summarize());
+    println!("{}",boat1.summarize());
 }
