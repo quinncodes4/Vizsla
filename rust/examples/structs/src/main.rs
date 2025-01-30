@@ -1,49 +1,46 @@
 
-pub struct Car {
-
-    pub year: String,
-    pub model: String,
-    pub num_of_engines: u8,
-    pub mph: u8,
+pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
 }
 
-pub struct Boat {
-    pub year: String,
-    pub model: String,
-    pub num_of_engines: u8,
-    pub knots: u8,
+pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
 }
 
-pub trait Describe {
+pub trait Summary {
     fn summarize(&self) -> String;
 }
-impl Describe for Car {
+
+impl Summary for Tweet {
     fn summarize(&self) -> String {
-        return self.year.clone();
+        format!("{}: {}", self.username, self.content)
     }
 }
 
-impl Describe for Boat{
+impl Summary for NewsArticle {
     fn summarize(&self) -> String {
-        return self.model.clone();
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
     }
 }
+
+
 //traits contain fn
 fn main() {
-    let car1 = Car {
-        year: String::from("1950"),
-        model: String::from("Ford"),
-        num_of_engines: 1,
-        mph: 50,
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
     };
 
-    let boat1 = Boat {
-        year: String::from("2000"),
-        model: String::from("navy"),
-        num_of_engines: 2,
-        knots: 20,
-    };
-
-    println!("{}",car1.summarize());
-    println!("{}",boat1.summarize());
+    println!("1 new tweet: {}", tweet.summarize());
+    
 }
