@@ -2,7 +2,6 @@
 mod test;
 //mod testdir;
 
-
 fn main() {
     let x: u32 = 5;
     let y: u32 = 5;
@@ -14,6 +13,11 @@ fn main() {
     println!("split string is: {}",stringIndexValue(st.to_string(),6));
     loopString(st.to_string());
     test::function();
+    println!("-------");
+
+    
+
+   
 }
 
 //print method but must take u32

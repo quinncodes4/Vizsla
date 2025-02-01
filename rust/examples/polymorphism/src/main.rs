@@ -21,9 +21,10 @@ fn main() {
 
     //lets create a vector of animal trait structs
 
-    let mut v: Vec<Box<dyn Animal>> = Vec::new();
-    v.push(Box::new(cat1));
-    v.push(Box::new(dog1));
+    // let mut v: Vec<Box<dyn Animal>> = Vec::new(), allows me to run v.iter()
+    let mut v: Vec<dyn Animal> = Vec::new();
+    v.push(cat1);
+    v.push(dog1);
 
     println!("-----");
 
@@ -31,12 +32,29 @@ fn main() {
     for animal in v.iter(){
         animal.make_sound();
     }
+
+    //messing around with vectors and indeces
+
+    let s: String = String::from("Hello world general dynamics");
+
+    let mut v: Vec<char> = Vec::new();
+
+    for char in s.chars(){
+        v.push(char);
+    }
+    
+    for i in 0..v.len(){
+        println!("{}",v[i]);
+    }
+
 }
 
 
 trait Animal {
     fn make_sound(&self);
 }
+
+struct T;
 
 struct Dog;
 
